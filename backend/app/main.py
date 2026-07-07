@@ -1,4 +1,7 @@
 from fastapi import FastAPI
+from app.database import engine, Base
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="MarketInsight Cloud API",
@@ -15,4 +18,10 @@ def root():
 def health():
     return {
         "status": "healthy"
+    }
+
+@app.get("/db-test")
+def database_test():
+    return {
+        "database": "Connected"
     }
