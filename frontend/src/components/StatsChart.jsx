@@ -1,4 +1,5 @@
 import { Card, CardContent, Typography } from "@mui/material";
+import { LineChart } from "@mui/x-charts/LineChart";
 
 export default function StatsChart() {
   return (
@@ -7,8 +8,8 @@ export default function StatsChart() {
         bgcolor: "#1f1f1f",
         color: "white",
         borderRadius: 3,
-        height: 300,
         border: "1px solid #ff2d2d",
+        height: 300,
       }}
     >
       <CardContent>
@@ -16,9 +17,21 @@ export default function StatsChart() {
           Statistics
         </Typography>
 
-        <Typography variant="body2" color="gray">
-          📈 Chart will be added in the next step.
-        </Typography>
+        <LineChart
+          xAxis={[
+            {
+              data: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+              scaleType: "point",
+            },
+          ]}
+          series={[
+            {
+              data: [10, 25, 20, 35, 40, 55],
+            },
+          ]}
+          width={600}
+          height={200}
+        />
       </CardContent>
     </Card>
   );
