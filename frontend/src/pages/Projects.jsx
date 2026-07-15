@@ -23,7 +23,7 @@ function Projects() {
   const [status, setStatus] = useState("active");
 
   const loadProjects = () => {
-    fetch(`${import.meta.env.VITE_API_URL}/projects/")
+    fetch(`${import.meta.env.VITE_API_URL}/projects/`)
       .then((res) => res.json())
       .then((data) => setProjects(data))
       .catch((err) => console.error("Error loading projects:", err));
@@ -41,7 +41,7 @@ function Projects() {
   };
 
   const createProject = async () => {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/projects/", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/projects/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

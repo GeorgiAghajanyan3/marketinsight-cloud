@@ -20,7 +20,7 @@ export default function Surveys() {
 
   const fetchSurveys = async () => {
     const response = await fetch(
-      `${import.meta.env.VITE_API_URL}/projects/surveys"
+      `${import.meta.env.VITE_API_URL}/projects/surveys`
     );
 
     const data = await response.json();
@@ -50,7 +50,7 @@ export default function Surveys() {
       setEditingId(null);
     } else {
       await fetch(
-        `${import.meta.env.VITE_API_URL}/projects/surveys",
+        `${import.meta.env.VITE_API_URL}/projects/surveys`,
         {
           method: "POST",
           headers: {
