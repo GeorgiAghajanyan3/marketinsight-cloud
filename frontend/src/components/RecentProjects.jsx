@@ -1,44 +1,37 @@
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
   Typography,
   List,
   ListItem,
-  ListItemText,
+  ListItemText
 } from "@mui/material";
 
 export default function RecentProjects() {
-  const projects = [
-    "Customer Satisfaction Survey",
-    "Competitor Analysis",
-    "AI Market Report",
-    "Retail Dashboard",
-  ];
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/projects/")
+      .then((res) => res.json())
+      .then((data) => {
+        setProjects(data.slice(-5).reverse());
+      });
+  }, []);
 
   return (
-    <Card
-      sx={{
-        bgcolor: "#1f1f1f",
-        color: "white",
-        borderRadius: 3,
-        height: 300,
-        border: "1px solid #ff5722",
-      }}
-    >
+    <Card>
       <CardContent>
-        <Typography variant="h6" sx={{ mb: 2 }}>
+        <Typography variant="h6" gutterBottom>
           Recent Projects
         </Typography>
 
         <List>
           {projects.map((project) => (
-            <ListItem key={project}>
+            <ListItem key={project.id}>
               <ListItemText
-                primary={
-                  <Typography color="white">
-                    {project}
-                  </Typography>
-                }
+                primary={project.name}
+                secondary={project.status}
               />
             </ListItem>
           ))}

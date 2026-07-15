@@ -1,66 +1,25 @@
-import {
-  Drawer,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-} from "@mui/material";
-
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import AnalyticsIcon from "@mui/icons-material/Analytics";
-import FolderIcon from "@mui/icons-material/Folder";
-import PollIcon from "@mui/icons-material/Poll";
-import SettingsIcon from "@mui/icons-material/Settings";
-
-const drawerWidth = 240;
-
-const menuItems = [
-  { text: "Dashboard", icon: <DashboardIcon /> },
-  { text: "Projects", icon: <FolderIcon /> },
-  { text: "Surveys", icon: <PollIcon /> },
-  { text: "Analytics", icon: <AnalyticsIcon /> },
-  { text: "Settings", icon: <SettingsIcon /> },
-];
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   return (
-    <Drawer
-      variant="permanent"
-      sx={{
-        width: drawerWidth,
-        flexShrink: 0,
-        "& .MuiDrawer-paper": {
-          width: drawerWidth,
-          bgcolor: "#202020",
-          color: "#fff",
-          borderRight: "2px solid #ff2d2d",
-        },
+    <div
+      style={{
+        width: "220px",
+        background: "#1f2937",
+        minHeight: "100vh",
+        padding: "20px",
+        borderRight: "2px solid #ef4444"
       }}
     >
-      <Toolbar />
+      <h3 style={{ color: "white" }}>Navigation</h3>
 
-      <List>
-        {menuItems.map((item) => (
-          <ListItemButton
-            key={item.text}
-            sx={{
-              m: 1,
-              borderRadius: 2,
-
-              "&:hover": {
-                bgcolor: "#ff2d2d",
-              },
-            }}
-          >
-            <ListItemIcon sx={{ color: "#ff2d2d" }}>
-              {item.icon}
-            </ListItemIcon>
-
-            <ListItemText primary={item.text} />
-          </ListItemButton>
-        ))}
-      </List>
-    </Drawer>
+      <div style={{ marginTop: "20px", display: "flex", flexDirection: "column", gap: "20px" }}>
+        <Link to="/" style={{ color: "white", textDecoration: "none" }}>📊 Dashboard</Link>
+        <Link to="/projects" style={{ color: "white", textDecoration: "none" }}>📁 Projects</Link>
+        <Link to="/surveys" style={{ color: "white", textDecoration: "none" }}>📝 Surveys</Link>
+        <Link to="/analytics" style={{ color: "white", textDecoration: "none" }}>📈 Analytics</Link>
+        <Link to="/settings" style={{ color: "white", textDecoration: "none" }}>⚙️ Settings</Link>
+      </div>
+    </div>
   );
 }
