@@ -20,41 +20,41 @@ export default function Dashboard() {
   const [responseCount, setResponseCount] = useState(0);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/projects/count")
+    fetch(`${import.meta.env.VITE_API_URL}/projects/count`)
       .then((res) => res.json())
       .then((data) => setProjectCount(data.count));
   }, []);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/dashboard")
+    fetch(`${import.meta.env.VITE_API_URL}/api/dashboard`)
       .then((res) => res.json())
       .then((data) => setStats(data))
       .catch((err) => console.error(err));
   }, []);
 
   useEffect(() => {
-  fetch("http://127.0.0.1:8000/projects/surveys/count")
+  fetch(`${import.meta.env.VITE_API_URL}/projects/surveys/count`)
     .then((res) => res.json())
     .then((data) => setSurveyCount(data.count))
     .catch((err) => console.error(err));
 }, []);
 
 useEffect(() => {
-  fetch("http://127.0.0.1:8000/projects/questions/count")
+  fetch(`${import.meta.env.VITE_API_URL}/projects/questions/count`)
     .then((res) => res.json())
     .then((data) => setQuestionCount(data.count))
     .catch((err) => console.error(err));
 }, []);
 
 useEffect(() => {
-  fetch("http://127.0.0.1:8000/projects/responses/count")
+  fetch(`${import.meta.env.VITE_API_URL}/projects/responses/count`)
     .then((res) => res.json())
     .then((data) => setResponseCount(data.count))
     .catch((err) => console.error(err));
 }, []);
 
 useEffect(() => {
-  fetch("http://127.0.0.1:8000/projects/responses/count")
+  fetch(`${import.meta.env.VITE_API_URL}/projects/responses/count`)
     .then((res) => res.json())
     .then((data) => setResponseCount(data.count))
     .catch((err) => console.error(err));

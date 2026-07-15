@@ -23,7 +23,7 @@ function Projects() {
   const [status, setStatus] = useState("active");
 
   const loadProjects = () => {
-    fetch("http://127.0.0.1:8000/projects/")
+    fetch(`${import.meta.env.VITE_API_URL}/projects/")
       .then((res) => res.json())
       .then((data) => setProjects(data))
       .catch((err) => console.error("Error loading projects:", err));
@@ -41,7 +41,7 @@ function Projects() {
   };
 
   const createProject = async () => {
-    const response = await fetch("http://127.0.0.1:8000/projects/", {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/projects/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function Projects() {
   };
 
   const updateProject = async () => {
-    const response = await fetch(`http://127.0.0.1:8000/projects/${editingId}`, {
+    const response = await fetch(`http://127.0.0.1:62868/projects/${editingId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -79,7 +79,7 @@ function Projects() {
   };
 
   const deleteProject = async (id) => {
-    const response = await fetch(`http://127.0.0.1:8000/projects/${id}`, {
+    const response = await fetch(`http://127.0.0.1:62868/projects/${id}`, {
       method: "DELETE",
     });
 

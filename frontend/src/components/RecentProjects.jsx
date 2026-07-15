@@ -12,7 +12,7 @@ export default function RecentProjects() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/projects/")
+    fetch(`${import.meta.env.VITE_API_URL}/projects/")
       .then((res) => res.json())
       .then((data) => {
         setProjects(data.slice(-5).reverse());

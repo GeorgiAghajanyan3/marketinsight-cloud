@@ -20,7 +20,7 @@ export default function Surveys() {
 
   const fetchSurveys = async () => {
     const response = await fetch(
-      "http://127.0.0.1:8000/projects/surveys"
+      `${import.meta.env.VITE_API_URL}/projects/surveys"
     );
 
     const data = await response.json();
@@ -34,7 +34,7 @@ export default function Surveys() {
   const createSurvey = async () => {
     if (editingId) {
       await fetch(
-        `http://127.0.0.1:8000/projects/surveys/${editingId}`,
+        `http://127.0.0.1:62868/projects/surveys/${editingId}`,
         {
           method: "PUT",
           headers: {
@@ -50,7 +50,7 @@ export default function Surveys() {
       setEditingId(null);
     } else {
       await fetch(
-        "http://127.0.0.1:8000/projects/surveys",
+        `${import.meta.env.VITE_API_URL}/projects/surveys",
         {
           method: "POST",
           headers: {
@@ -78,7 +78,7 @@ export default function Surveys() {
 
   const deleteSurvey = async (id) => {
     await fetch(
-      `http://127.0.0.1:8000/projects/surveys/${id}`,
+      `http://127.0.0.1:62868/projects/surveys/${id}`,
       {
         method: "DELETE",
       }
@@ -91,7 +91,7 @@ export default function Surveys() {
   setSelectedSurvey(survey);
 
   const response = await fetch(
-    `http://127.0.0.1:8000/projects/questions/${survey.id}`
+    `http://127.0.0.1:62868/projects/questions/${survey.id}`
   );
 
   const data = await response.json();
@@ -102,7 +102,7 @@ export default function Surveys() {
 
   for (const question of data) {
     const optionsResponse = await fetch(
-      `http://127.0.0.1:8000/projects/options/${question.id}`
+      `http://127.0.0.1:62868/projects/options/${question.id}`
     );
 
     optionsData[question.id] =
@@ -115,7 +115,7 @@ export default function Surveys() {
   const createQuestion = async () => {
   try {
     const questionResponse = await fetch(
-      `http://127.0.0.1:8000/projects/questions`,
+      `http://127.0.0.1:62868/projects/questions`,
       {
         method: "POST",
         headers: {
@@ -135,7 +135,7 @@ export default function Surveys() {
     for (const option of options) {
       if (option.trim() !== "") {
         await fetch(
-          `http://127.0.0.1:8000/projects/options`,
+          `http://127.0.0.1:62868/projects/options`,
           {
             method: "POST",
             headers: {

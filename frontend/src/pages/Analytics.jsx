@@ -18,7 +18,7 @@ export default function Analytics() {
 
   const fetchStatistics = async () => {
     const response = await fetch(
-      "http://127.0.0.1:8000/projects/statistics/4"
+      `${import.meta.env.VITE_API_URL}/projects/statistics/4"
     );
 
     const result = await response.json();
